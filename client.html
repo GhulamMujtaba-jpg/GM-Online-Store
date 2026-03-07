@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +50,8 @@ form button{width:100%;background:#27ae60;color:white;border:none;padding:8px;bo
 </div>
 
 <script>
-// Load products from localStorage (same storage as admin page)
+
+// Load products
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
 function renderProducts(){
@@ -76,13 +76,13 @@ function renderProducts(){
     });
 }
 
-// ========== Order Form Popup ==========
+// Order Form
 function openOrderForm(i){
     let p = products[i];
     Swal.fire({
         title: `Order: ${p.name}`,
         html: `
-        <form id="orderForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" target="_blank">
+        <form id="orderForm" action="https://formspree.io/f/xkoqnkze" method="POST" target="_blank">
             <input type="hidden" name="Product" value="${p.name}">
             <input type="text" name="Name" placeholder="Your Name" required>
             <input type="email" name="Email" placeholder="Your Email" required>
@@ -97,7 +97,7 @@ function openOrderForm(i){
     });
 }
 
-// ========== View Details ==========
+// View Details
 function viewProductDetail(i){
     let p = products[i];
     let final = (p.price-(p.price*p.discount/100)).toFixed(0);
@@ -119,6 +119,7 @@ function viewProductDetail(i){
 }
 
 renderProducts();
+
 </script>
 
 </body>
